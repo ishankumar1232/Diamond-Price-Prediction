@@ -1,0 +1,97 @@
+[
+  {
+    "Configuration": "Config 1: Full Feature Set (All Available Attributes)",
+    "Features_Count": 16,
+    "Test_Accuracy": 0.9815,
+    "Test_F1_Score": 0.9806,
+    "Test_ROC_AUC": 0.9991,
+    "Confusion_Matrix": [
+      [
+        664,
+        6
+      ],
+      [
+        18,
+        608
+      ]
+    ],
+    "Evaluation_Sample": 1296,
+    "Scientific_Note": "Includes Culet (70.8% null) and Fluorescence (81.2% null) missingness flags."
+  },
+  {
+    "Configuration": "Config 2: Missingness-Prone Features Removed",
+    "Features_Count": 14,
+    "Test_Accuracy": 0.9707,
+    "Test_F1_Score": 0.9693,
+    "Test_ROC_AUC": 0.9971,
+    "Confusion_Matrix": [
+      [
+        658,
+        12
+      ],
+      [
+        26,
+        600
+      ]
+    ],
+    "Evaluation_Sample": 1296,
+    "Scientific_Note": "Culet and Fluorescence excluded; tests sensitivity to scraper reporting gaps."
+  },
+  {
+    "Configuration": "Config 3: Standard 4Cs & Dimensions Only",
+    "Features_Count": 10,
+    "Test_Accuracy": 0.9645,
+    "Test_F1_Score": 0.9631,
+    "Test_ROC_AUC": 0.9956,
+    "Confusion_Matrix": [
+      [
+        650,
+        20
+      ],
+      [
+        26,
+        600
+      ]
+    ],
+    "Evaluation_Sample": 1296,
+    "Scientific_Note": "Excludes finishing grades (Polish, Symmetry, Girdle); retains only fundamental 4Cs and geometry."
+  },
+  {
+    "Configuration": "Config 4: Carat Weight Alone",
+    "Features_Count": 1,
+    "Test_Accuracy": 0.8264,
+    "Test_F1_Score": 0.8221,
+    "Test_ROC_AUC": 0.8904,
+    "Confusion_Matrix": [
+      [
+        551,
+        119
+      ],
+      [
+        106,
+        520
+      ]
+    ],
+    "Evaluation_Sample": 1296,
+    "Scientific_Note": "Demonstrates how much classification power stems purely from inventory selection bias (GIA mean 1.06 ct vs Lab mean 1.42 ct)."
+  },
+  {
+    "Configuration": "Config 5: Matched 1.0-Carat Bracket (Core 4Cs Only)",
+    "Features_Count": 9,
+    "Test_Accuracy": 0.9489,
+    "Test_F1_Score": 0.8943,
+    "Test_ROC_AUC": 0.9883,
+    "Confusion_Matrix": [
+      [
+        689,
+        24
+      ],
+      [
+        24,
+        203
+      ]
+    ],
+    "Evaluation_Sample": 940,
+    "Scientific_Note": "Controls for carat weight by evaluating solely within the 0.95-1.05 ct window (N=3,757 diamonds)."
+  }
+]

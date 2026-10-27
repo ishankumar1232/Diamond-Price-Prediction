@@ -1,0 +1,10 @@
+Model,CV_Train_MAE,Test_MAE,Test_RMSE,Test_R2,Fit_Time_Sec
+CatBoost + XGBoost Ensemble (0.55 / 0.45),,273.0,519.07,0.983194,5871.24
+Extra Trees Regressor (200 trees),285.89,274.52,546.72,0.981356,31.0
+CatBoost Regressor,,277.29,520.01,0.983133,61.21
+XGBoost Regressor,296.9,287.09,555.65,0.980742,5810.03
+Random Forest Regressor (200 trees),303.94,287.72,594.36,0.977965,29.36
+Gradient Boosting Regressor,319.63,309.93,598.65,0.977646,1152.65
+Decision Tree Regressor,372.73,357.59,735.68,0.96624,5.3
+Ridge Regression (alpha=1.0),739.02,725.79,1135.08,0.919635,5.1
+Linear Regression,739.6,726.3,1135.94,0.919513,7.28

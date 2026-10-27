@@ -1,0 +1,5 @@
+Protocol,Methodology,Train_N,Test_N,Leaked_Test_Rows,Ensemble_MAE,Ensemble_RMSE,Ensemble_R2
+Holdout Comparison,A1. Random 80/20 Holdout,43136,10784,117,273.44,517.6,0.983289
+Holdout Comparison,A2. Grouped 80/20 Holdout,43137,10783,0,272.05,528.19,0.982094
+Cross-Validation Comparison,B1. Random 5-Fold CV (Mean),43136,10784,555,278.37,532.99,0.982123
+Cross-Validation Comparison,B2. Grouped 5-Fold CV (Mean),43136,10784,0,278.87,534.74,0.982

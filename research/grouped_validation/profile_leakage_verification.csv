@@ -1,0 +1,8 @@
+Fold_or_Method,Train_Test_Profile_Overlap,Profile_Isolation_Status
+Random Holdout,117,LEAKAGE DETECTED
+Grouped Holdout,0,PERFECTLY ISOLATED
+Grouped 5-Fold Fold 1,0,PERFECTLY ISOLATED
+Grouped 5-Fold Fold 2,0,PERFECTLY ISOLATED
+Grouped 5-Fold Fold 3,0,PERFECTLY ISOLATED
+Grouped 5-Fold Fold 4,0,PERFECTLY ISOLATED
+Grouped 5-Fold Fold 5,0,PERFECTLY ISOLATED

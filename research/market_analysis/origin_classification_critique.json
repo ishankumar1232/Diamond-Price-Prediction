@@ -1,0 +1,58 @@
+{
+  "classification_accuracy": 0.979891724671307,
+  "f1_score_lab_grown": 0.9789644012944984,
+  "roc_auc": 0.9987471733547968,
+  "confusion_matrix": [
+    [
+      662,
+      7
+    ],
+    [
+      19,
+      605
+    ]
+  ],
+  "top_features": [
+    {
+      "Feature": "num__Carat Weight",
+      "Importance": 0.1567273106909598
+    },
+    {
+      "Feature": "cat__Culet_Unknown",
+      "Importance": 0.13982421454754423
+    },
+    {
+      "Feature": "cat__Culet_Pointed",
+      "Importance": 0.11872125386955268
+    },
+    {
+      "Feature": "cat__Clarity_VS2",
+      "Importance": 0.07563739517619232
+    },
+    {
+      "Feature": "cat__Fluorescence_Unknown",
+      "Importance": 0.0652901916899703
+    },
+    {
+      "Feature": "cat__Color_H",
+      "Importance": 0.05504225031071385
+    },
+    {
+      "Feature": "num__Height",
+      "Importance": 0.045593549145329655
+    },
+    {
+      "Feature": "num__Length",
+      "Importance": 0.0452280670775019
+    },
+    {
+      "Feature": "num__Width",
+      "Importance": 0.043766378974870825
+    },
+    {
+      "Feature": "cat__Clarity_VS1",
+      "Importance": 0.03581436261349543
+    }
+  ],
+  "scientific_critique": "While the Random Forest classifier achieves high nominal accuracy (>90%) on this specific dataset, this result is an artifact of dataset sampling bias (e.g. specific carat and clarity groupings selected by the scraper). In physical gemology, CVD and HPHT lab-grown diamonds possess the exact same crystalline structure (isometric carbon lattice) and identical density and optical refractions as natural diamonds. Therefore, superficial 4C measurements cannot physically determine diamond origin in an open market without specialized spectroscopy (FTIR, photoluminescence). Deploying this classifier to retail users would produce severe false confidence."
+}

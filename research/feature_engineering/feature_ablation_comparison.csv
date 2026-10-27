@@ -1,0 +1,7 @@
+Configuration,Total_Features,Test_MAE,Delta_MAE_vs_Baseline,Test_RMSE,Test_R2,Verdict
+Config 0: Baseline (Standard 9 Features),9,287.09,0.0,555.65,0.980742,Baseline
+Config 1: Baseline + Physical Volume (x*y*z),10,288.71,1.62,564.39,0.980131,Redundant / Marginal
+Config 2: Baseline + Carat-Quality Interactions,12,263.69,-23.4,507.77,0.983917,Improvement
+Config 3: Baseline + Carat x Clarity Only,10,268.7,-18.39,514.78,0.98347,Improvement
+"Config 4: Baseline + Geometry (Volume, Aspect, Depth Ratio)",12,281.58,-5.51,561.72,0.980319,Improvement
+Config 5: Full Engineered Set (All Candidate Features),16,254.66,-32.44,499.8,0.984419,Improvement

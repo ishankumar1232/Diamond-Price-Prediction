@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiamondIQ — Estimate Diamond Price</title>
+    <meta name="description" content="Calculate precision diamond price estimates with Standard and Detailed machine-learning valuation pipelines.">
+    
+    <!-- Google Fonts for Editorial Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="cinematic-page">
+
+    <!-- MINIMAL LUXURY NAVBAR -->
+    <header class="cinematic-navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo" aria-label="DiamondIQ Home">
+                <span class="brand-symbol">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 9l10 13 10-13-10-7zm0 2.8L18.4 9H5.6L12 4.8zM4.1 10.5h4.6l2.3 8.3-6.9-8.3zm6.4 0h3l-1.5 8.7-1.5-8.7zm4.8 0h4.6l-6.9 8.3 2.3-8.3z"/>
+                    </svg>
+                </span>
+                Diamond<span class="brand-accent">IQ</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/prediction?mode=standard" class="nav-item {% if mode == 'standard' %}active{% endif %}">Standard Estimate</a>
+                <a href="/prediction?mode=detailed" class="nav-item {% if mode == 'detailed' %}active{% endif %}">Detailed Estimate</a>
+                <a href="/prediction?mode=standard#simulator" class="nav-item">Carat Explorer</a>
+                <a href="/origin-screening" class="nav-item">Origin Screening</a>
+            </nav>
+
+            <div class="nav-cta-wrap">
+                {% if prediction is not none %}
+                <a href="{{ url_for('download_report') }}" class="pill-nav-btn" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+                    Download PDF ↓
+                </a>
+                {% else %}
+                <a href="/" class="pill-nav-btn">
+                    ← Home
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- INTRO & MODE SELECTOR -->
+        <section class="predict-header">
+            <p class="eyebrow">Machine Learning Valuation Suite</p>
+            <h1>Estimate Your Diamond's Value</h1>
+            <p>
+                Select your preferred valuation pipeline, enter verified diamond grading attributes, and obtain an instant algorithmic estimate with error bounds.
+            </p>
+
+            <!-- Accessible Segmented Tab Control -->
+            <div class="mode-segmented-control" role="tablist" aria-label="Valuation Pipeline Mode">
+                <button
+                    type="button"
+                    role="tab"
+                    id="tab-standard"
+                    class="mode-tab-btn {% if mode == 'standard' %}active{% endif %}"
+                    data-mode="standard"
+                    aria-selected="{{ 'true' if mode == 'standard' else 'false' }}"
+                    aria-controls="prediction-form">
+                    <strong>01 · Standard Pipeline</strong>
+                    <small>CatBoost + XGBoost (4Cs & Dimensions)</small>
+                </button>
+
+                <button
+                    type="button"
+                    role="tab"
+                    id="tab-detailed"
+                    class="mode-tab-btn {% if mode == 'detailed' %}active{% endif %}"
+                    data-mode="detailed"
+                    aria-selected="{{ 'true' if mode == 'detailed' else 'false' }}"
+                    aria-controls="prediction-form">
+                    <strong>02 · Detailed Pipeline</strong>
+                    <small>Tuned Random Forest (17 Lab Specs)</small>
+                </button>
+            </div>
+        </section>
+
+        <!-- ERROR ALERT BANNER -->
+        {% if error %}
+        <div class="error-alert" role="alert" aria-live="assertive">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+                <h4>Prediction Error</h4>
+                <p>{{ error }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- PREDICTION RESULTS (WHEN AVAILABLE) -->
+        {% if prediction is not none %}
+        <section class="result-card result-hero-card" id="results-section" aria-labelledby="result-title">
+            <div class="result-header">
+                <div>
+                    <p class="eyebrow">Estimated Price</p>
+                    <h2 id="result-title" style="color: #ffffff; font-size: 20px; font-weight: 700;">
+                        Valuation Point Estimate
+                    </h2>
+                </div>
+                {% if model_used %}
+                <span class="model-engine-badge">
+                    Model: {{ model_used }}
+                </span>
+                {% endif %}
+            </div>
+
+            <div class="result-price-wrap">
+                <div class="result-price-inr">
+                    ₹{{ "{:,.2f}".format(prediction_inr) }}
+                </div>
+                <div class="result-price result-price-usd">
+                    ${{ "{:,.2f}".format(prediction) }} USD
+                </div>
+                {% if exchange_rate %}
+                <div class="exchange-rate-tag">
+                    <span class="rate-icon">✦</span>
+                    <span>1 USD = ₹{{ "{:.2f}".format(exchange_rate.rate) }}</span>
+                    <span class="rate-source">({{ exchange_rate.source_label }})</span>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="result-actions">
+                <a href="{{ url_for('download_report') }}" class="pdf-download-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF Report
+                </a>
+
+                <a href="#prediction-form" class="modify-btn">
+                    Modify Specifications ↑
+                </a>
+            </div>
+        </section>
+
+        <!-- PRICE RANGE CARD -->
+        {% if price_range %}
+        <section class="price-range-card" aria-label="Estimated Price Range">
+            <div class="range-header">
+                <p class="eyebrow" style="margin-bottom: 0;">Estimated Price Range</p>
+                <span style="font-size: 12px; font-weight: 700; color: var(--blue-700); background: var(--blue-50); padding: 3px 8px; border-radius: var(--radius-sm);">
+                    MAE ±₹{{ "{:,.2f}".format(price_range_inr.mae) }} (±${{ "{:,.2f}".format(price_range.mae) }} USD)
+                </span>
+            </div>
+            <div class="range-values">
+                <div class="range-inr" style="font-size: clamp(20px, 3vw, 26px); font-weight: 800; color: var(--navy-900);">
+                    ₹{{ "{:,.2f}".format(price_range_inr.low) }} – ₹{{ "{:,.2f}".format(price_range_inr.high) }}
+                </div>
+                <div class="range-usd" style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-top: 2px;">
+                    ${{ "{:,.2f}".format(price_range.low) }} – ${{ "{:,.2f}".format(price_range.high) }} USD
+                </div>
+            </div>
+            <p class="range-meta">
+                {{ price_range.note }} Converted at 1 USD = ₹{{ "{:.2f}".format(exchange_rate.rate) }}.
+            </p>
+        </section>
+        {% endif %}
+
+        <!-- WHAT-IF COMPARISON: BEFORE VS AFTER -->
+        {% if comparison %}
+        <section class="comparison-card" aria-labelledby="comparison-heading">
+            <p class="eyebrow">Carat Sensitivity Comparison</p>
+            <h2 id="comparison-heading" style="font-size: 20px; margin-bottom: 6px;">Before vs After Carat Adjustment</h2>
+            <p style="font-size: 13.5px; color: var(--text-muted);">
+                Comparison of original valuation against simulated carat weight, holding all other diamond characteristics fixed.
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comparison-stat-box">
+                    <p>Original Baseline ({{ "%.2f"|format(comparison.original_carat) }} ct)</p>
+                    <div class="comparison-price">₹{{ "{:,.2f}".format(comparison_inr.original_price) }}</div>
+                    <div style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-top: 2px;">
+                        ${{ "{:,.2f}".format(comparison.original_price) }} USD
+                    </div>
+                </div>
+
+                <div class="comparison-stat-box">
+                    <p>Simulated Estimate ({{ "%.2f"|format(comparison.new_carat) }} ct)</p>
+                    <div class="comparison-price" style="color: var(--blue-700);">₹{{ "{:,.2f}".format(comparison_inr.new_price) }}</div>
+                    <div style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-top: 2px;">
+                        ${{ "{:,.2f}".format(comparison.new_price) }} USD
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-delta-banner {% if comparison.difference > 0 %}positive{% elif comparison.difference < 0 %}negative{% endif %}">
+                <div class="delta-title">
+                    {% if comparison.difference > 0 %}
+                    ↗ Estimated price increased with higher carat weight
+                    {% elif comparison.difference < 0 %}
+                    ↘ Estimated price decreased with lower carat weight
+                    {% else %}
+                    → Price unchanged
+                    {% endif %}
+                </div>
+                <div class="delta-pill">
+                    {% if comparison.difference > 0 %}+{% endif %}₹{{ "{:,.2f}".format(comparison_inr.difference) }}
+                    ({% if comparison.difference > 0 %}+{% endif %}${{ "{:,.2f}".format(comparison.difference) }} USD)
+                    {% if comparison.percentage is not none %}
+                    · {{ "%.1f"|format(comparison.percentage) }}%
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- EXPLAIN MY PREDICTION -->
+        {% if explanation and explanation.features %}
+        <section class="explanation-card" aria-labelledby="explanation-heading">
+            <p class="eyebrow">Local Attribution</p>
+            <h2 id="explanation-heading" style="font-size: 20px; margin-bottom: 6px;">Explain My Prediction</h2>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+                Impact of individual features evaluated by comparing each attribute against a benchmark reference diamond (1.00 ct, Ideal, G color, VS2 clarity, predicted at ${{ "{:,.2f}".format(explanation.reference_price) }}).
+            </p>
+
+            {% set max_impact = explanation.features|map(attribute='impact')|map('abs')|max %}
+
+            <div class="impact-list">
+                {% for item in explanation.features %}
+                {% set impact_pct = ((item.impact|abs / max_impact * 100) if max_impact > 0 else 0)|round(1) %}
+                <div class="impact-item">
+                    <div class="impact-item-header">
+                        <span class="impact-feature-name">{{ item.feature }} ({{ item.current_value }} vs. ref {{ item.reference_value }})</span>
+                        <span class="impact-delta {% if item.impact > 0 %}positive{% elif item.impact < 0 %}negative{% endif %}">
+                            {% if item.impact > 0 %}+{% endif %}${{ "{:,.2f}".format(item.impact) }}
+                        </span>
+                    </div>
+
+                    <div class="impact-progress-track">
+                        <div class="impact-bar impact-progress-fill {% if item.impact > 0 %}positive{% elif item.impact < 0 %}negative{% endif %}"
+                             data-width="{{ impact_pct }}"
+                             {{ ('style="width: ' ~ impact_pct ~ '%;"')|safe }}></div>
+                    </div>
+
+                    <div class="impact-note">
+                        {% if item.direction == 'higher' %}
+                        Specification yields a price premium relative to reference baseline.
+                        {% elif item.direction == 'lower' %}
+                        Specification yields a price discount relative to reference baseline.
+                        {% else %}
+                        Negligible price deviation from reference baseline.
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 12px;">
+                Note: Individual feature differences represent single-factor comparisons holding reference attributes constant; they do not represent additive Shapley attributions or physical causal guarantees.
+            </p>
+        </section>
+        {% endif %}
+
+        {% endif %} <!-- END OF RESULTS BLOCK -->
+
+        <!-- PREDICTION INPUT FORM -->
+        <section class="form-card" id="form-container" aria-labelledby="form-title">
+            <div class="form-header">
+                <div>
+                    <p class="eyebrow">Input Specifications</p>
+                    <h2 id="form-title">
+                        {% if mode == 'standard' %}Standard Diamond Details{% else %}Detailed Diamond Details{% endif %}
+                    </h2>
+                    <p>Enter the verified grading and measurement values for algorithmic evaluation.</p>
+                </div>
+                <div class="status-pill">
+                    <span class="status-pill-dot"></span>
+                    <span>Model Ready</span>
+                </div>
+            </div>
+
+            <form id="prediction-form" action="/predict" method="POST">
+
+                <input type="hidden" name="dataset_mode" id="dataset-mode" value="{{ mode }}">
+                <input type="hidden" name="baseline_price" id="baseline-price" value="{{ baseline_price or '' }}">
+                <input type="hidden" name="baseline_carat" id="baseline-carat" value="{{ baseline_carat or '' }}">
+
+                <!-- ════════════════════════════════════════════════
+                     STANDARD DATASET FIELDS (9 Features)
+                     ════════════════════════════════════════════════ -->
+                <div id="standard-fields" class="{% if mode != 'standard' %}hidden-fields{% endif %}">
+
+                    <!-- Section: Primary 4C Attributes -->
+                    <div class="form-section-title">1. Primary 4C Quality Grades</div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="carat">
+                                Carat Weight
+                                <span class="field-unit">0.10 – 5.00 ct</span>
+                            </label>
+                            <input
+                                id="carat" name="carat" type="number"
+                                min="0.1" max="5.0" step="0.01"
+                                value="{{ form_values.get('carat', '1.00') }}"
+                                placeholder="1.00"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Mass of the gemstone in metric carats</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="cut">
+                                Cut Grade
+                                <span class="field-unit">GIA Standard</span>
+                            </label>
+                            <select id="cut" name="cut" {% if mode == 'standard' %}required{% endif %}>
+                                {% for option in ['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'] %}
+                                <option value="{{ option }}" {% if form_values.get('cut', 'Ideal') == option %}selected{% endif %}>
+                                    {{ option }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Proportion and finish quality</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="color">
+                                Color Grade
+                                <span class="field-unit">D to J Scale</span>
+                            </label>
+                            <select id="color" name="color" {% if mode == 'standard' %}required{% endif %}>
+                                {% for option in ['D', 'E', 'F', 'G', 'H', 'I', 'J'] %}
+                                <option value="{{ option }}" {% if form_values.get('color', 'G') == option %}selected{% endif %}>
+                                    Grade {{ option }} {% if option in ['D', 'E', 'F'] %}(Colorless){% elif option in ['G', 'H', 'I', 'J'] %}(Near Colorless){% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Absence of body tint</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="clarity">
+                                Clarity Grade
+                                <span class="field-unit">FL to I1 Scale</span>
+                            </label>
+                            <select id="clarity" name="clarity" {% if mode == 'standard' %}required{% endif %}>
+                                {% for option in ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'] %}
+                                <option value="{{ option }}" {% if form_values.get('clarity', 'VS2') == option %}selected{% endif %}>
+                                    {{ option }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Inclusion density and visibility</span>
+                        </div>
+                    </div>
+
+                    <!-- Section: Physical Proportions & Coordinates -->
+                    <div class="form-section-title">2. Proportions & Millimeter Dimensions</div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="depth">
+                                Total Depth
+                                <span class="field-unit">40.0 – 80.0 %</span>
+                            </label>
+                            <input
+                                id="depth" name="depth" type="number"
+                                min="40" max="80" step="0.1"
+                                value="{{ form_values.get('depth', '61.5') }}"
+                                placeholder="61.5"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Ratio of depth to average diameter</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="table">
+                                Table Width
+                                <span class="field-unit">40.0 – 80.0 %</span>
+                            </label>
+                            <input
+                                id="table" name="table" type="number"
+                                min="40" max="80" step="0.1"
+                                value="{{ form_values.get('table', '55') }}"
+                                placeholder="55.0"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Width of largest top facet</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="x">
+                                Length X
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="x" name="x" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('x', '6.4') }}"
+                                placeholder="6.40"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Measurement length in mm</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="y">
+                                Width Y
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="y" name="y" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('y', '6.4') }}"
+                                placeholder="6.40"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Measurement width in mm</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="z">
+                                Height Z
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="z" name="z" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('z', '3.94') }}"
+                                placeholder="3.94"
+                                {% if mode == 'standard' %}required{% endif %}>
+                            <span class="field-hint">Total physical height in mm</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ════════════════════════════════════════════════
+                     DETAILED DATASET FIELDS (17 Features)
+                     ════════════════════════════════════════════════ -->
+                <div id="detailed-fields" class="{% if mode != 'detailed' %}hidden-fields{% endif %}">
+
+                    <div class="form-section-title">1. Primary Gemological Attributes</div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="d-shape">
+                                Shape / Cut Profile
+                                <span class="field-unit">Outline</span>
+                            </label>
+                            <select id="d-shape" name="Shape" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['Round', 'Princess', 'Cushion', 'Oval', 'Emerald', 'Pear', 'Radiant', 'Asscher', 'Marquise', 'Heart'] %}
+                                <option value="{{ option }}" {% if form_values.get('Shape', 'Round') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Geometric stone outline</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-cut">
+                                Cut Quality
+                                <span class="field-unit">Grade</span>
+                            </label>
+                            <select id="d-cut" name="Cut" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor'] %}
+                                <option value="{{ option }}" {% if form_values.get('Cut', 'Excellent') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Overall cut grade</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-color">
+                                Color Grade
+                                <span class="field-unit">Scale</span>
+                            </label>
+                            <select id="d-color" name="Color" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'] %}
+                                <option value="{{ option }}" {% if form_values.get('Color', 'G') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Color rating</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-clarity">
+                                Clarity Grade
+                                <span class="field-unit">Clarity</span>
+                            </label>
+                            <select id="d-clarity" name="Clarity" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1', 'I2', 'I3'] %}
+                                <option value="{{ option }}" {% if form_values.get('Clarity', 'VS2') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Inclusion grade</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-carat">
+                                Carat Weight
+                                <span class="field-unit">0.10 – 5.00 ct</span>
+                            </label>
+                            <input
+                                id="d-carat" name="Carat Weight" type="number"
+                                min="0.1" max="5.0" step="0.01"
+                                value="{{ form_values.get('Carat Weight', '1.00') }}"
+                                placeholder="1.00"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Weight in carats</span>
+                        </div>
+                    </div>
+
+                    <div class="form-section-title">2. Proportions & Geometric Dimensions</div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="d-ratio">
+                                Length/Width Ratio
+                                <span class="field-unit">0.10 – 3.00</span>
+                            </label>
+                            <input
+                                id="d-ratio" name="Length/Width Ratio" type="number"
+                                min="0.1" max="3" step="0.01"
+                                value="{{ form_values.get('Length/Width Ratio', '1.00') }}"
+                                placeholder="1.00"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Proportional outline ratio</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-depth">
+                                Depth %
+                                <span class="field-unit">1.0 – 100.0 %</span>
+                            </label>
+                            <input
+                                id="d-depth" name="Depth %" type="number"
+                                min="1" max="100" step="0.1"
+                                value="{{ form_values.get('Depth %', '61.5') }}"
+                                placeholder="61.5"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Depth to width percentage</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-table">
+                                Table %
+                                <span class="field-unit">1.0 – 100.0 %</span>
+                            </label>
+                            <input
+                                id="d-table" name="Table %" type="number"
+                                min="1" max="100" step="0.1"
+                                value="{{ form_values.get('Table %', '55') }}"
+                                placeholder="55.0"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Table facet percentage</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-length">
+                                Length
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="d-length" name="Length" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('Length', '6.4') }}"
+                                placeholder="6.40"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Length coordinate in mm</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-width">
+                                Width
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="d-width" name="Width" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('Width', '6.4') }}"
+                                placeholder="6.40"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Width coordinate in mm</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-height">
+                                Height
+                                <span class="field-unit">0.10 – 30.00 mm</span>
+                            </label>
+                            <input
+                                id="d-height" name="Height" type="number"
+                                min="0.1" max="30" step="0.01"
+                                value="{{ form_values.get('Height', '3.94') }}"
+                                placeholder="3.94"
+                                {% if mode == 'detailed' %}required{% endif %}>
+                            <span class="field-hint">Height coordinate in mm</span>
+                        </div>
+                    </div>
+
+                    <div class="form-section-title">3. Finish, Inclusions & Certificate Details</div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="d-polish">
+                                Polish Quality
+                                <span class="field-unit">Finish</span>
+                            </label>
+                            <select id="d-polish" name="Polish" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor'] %}
+                                <option value="{{ option }}" {% if form_values.get('Polish', 'Excellent') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Surface smoothness</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-symmetry">
+                                Symmetry
+                                <span class="field-unit">Alignment</span>
+                            </label>
+                            <select id="d-symmetry" name="Symmetry" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor'] %}
+                                <option value="{{ option }}" {% if form_values.get('Symmetry', 'Excellent') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Facet placement symmetry</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-girdle">
+                                Girdle Thickness
+                                <span class="field-unit">Edge</span>
+                            </label>
+                            <select id="d-girdle" name="Girdle" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['Very Thin', 'Thin', 'Medium', 'Slightly Thick', 'Thick', 'Very Thick', 'Extremely Thick'] %}
+                                <option value="{{ option }}" {% if form_values.get('Girdle', 'Medium') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Perimeter edge thickness</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-culet">
+                                Culet Size
+                                <span class="field-unit">Bottom Facet</span>
+                            </label>
+                            <select id="d-culet" name="Culet" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['None', 'Very Small', 'Small', 'Medium', 'Slightly Large', 'Large', 'Very Large'] %}
+                                <option value="{{ option }}" {% if form_values.get('Culet', 'None') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Bottom facet size</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-type">
+                                Grading Agency / Category
+                                <span class="field-unit">Dataset Tag</span>
+                            </label>
+                            <select id="d-type" name="Type" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['GIA', 'AGS', 'IGI', 'EGL', 'HRD', 'Other', 'Unknown'] %}
+                                <option value="{{ option }}" {% if form_values.get('Type', 'GIA') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Listed certification tag</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="d-fluorescence">
+                                Fluorescence
+                                <span class="field-unit">UV Response</span>
+                            </label>
+                            <select id="d-fluorescence" name="Fluorescence" {% if mode == 'detailed' %}required{% endif %}>
+                                {% for option in ['None', 'Faint', 'Medium', 'Strong', 'Very Strong', 'Unknown'] %}
+                                <option value="{{ option }}" {% if form_values.get('Fluorescence', 'Unknown') == option %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="field-hint">Response to long-wave UV light</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Form Submit Footer -->
+                <div class="form-footer">
+                    <p class="form-disclaimer">
+                        Valuations are generated through supervised tree models trained on historical diamond markets. Estimates are not legally binding appraisals or live retail quotes.
+                    </p>
+
+                    <button class="predict-btn predict-submit-btn" type="submit" id="submit-btn">
+                        Calculate Estimated Price →
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- CARAT PRICE EXPLORER (STANDARD PIPELINE ONLY) -->
+        {% if mode == 'standard' %}
+        <section class="form-card simulator-card simulator-panel" id="simulator" aria-labelledby="simulator-heading" style="margin-top: 24px;">
+            <p class="eyebrow">Interactive Exploration</p>
+            <h2 id="simulator-heading" style="font-size: 20px; margin-bottom: 6px;">Carat Price Explorer</h2>
+            <p style="font-size: 14px; color: var(--text-main); font-weight: 500; margin-bottom: 12px;">
+                Change carat weight to see how the model's estimated price changes while the other diamond characteristics remain fixed.
+            </p>
+
+            <div class="fixed-profile-box" style="background: var(--slate-50); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;">
+                <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--blue-700); letter-spacing: 0.5px;">Fixed Diamond Profile:</span>
+                <span style="font-size: 13px; color: var(--text-main); margin-left: 6px;">
+                    {{ form_values.get('cut', 'Ideal') }} Cut · 
+                    {{ form_values.get('color', 'G') }} Color · 
+                    {{ form_values.get('clarity', 'VS2') }} Clarity · 
+                    {{ form_values.get('depth', '61.5') }}% Depth · 
+                    {{ form_values.get('table', '55') }}% Table · 
+                    {{ form_values.get('x', '6.4') }} × {{ form_values.get('y', '6.4') }} × {{ form_values.get('z', '3.94') }} mm
+                </span>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-header">
+                    <label for="simulator-carat" style="font-weight: 600; color: var(--text-main);">Choose Carat Weight:</label>
+                    <div class="slider-badge">
+                        <strong id="simulator-carat-value">{{ form_values.get('carat', '1.00') }}</strong> ct
+                    </div>
+                </div>
+
+                <input
+                    id="simulator-carat"
+                    type="range"
+                    min="0.1" max="5.0" step="0.01"
+                    value="{{ form_values.get('carat', '1.00') }}"
+                    aria-label="Simulated Carat Weight Slider">
+
+                <!-- Quick Carat Presets -->
+                <div class="preset-chips-wrap">
+                    <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Presets:</span>
+                    <button type="button" class="preset-chip-btn" data-preset="0.50">0.50 ct</button>
+                    <button type="button" class="preset-chip-btn" data-preset="0.75">0.75 ct</button>
+                    <button type="button" class="preset-chip-btn" data-preset="1.00">1.00 ct</button>
+                    <button type="button" class="preset-chip-btn" data-preset="1.50">1.50 ct</button>
+                    <button type="button" class="preset-chip-btn" data-preset="2.00">2.00 ct</button>
+                    <button type="button" class="preset-chip-btn" data-preset="3.00">3.00 ct</button>
+                </div>
+            </div>
+
+            <div class="simulator-actions" style="margin-top: 16px;">
+                <button type="button" class="predict-btn primary-btn" id="apply-simulator">
+                    Estimate Price →
+                </button>
+                <span id="simulator-status" style="font-size: 12px; color: var(--text-muted); margin-left: 12px;">
+                    Evaluates the model for the selected carat while keeping other attributes fixed.
+                </span>
+            </div>
+        </section>
+        {% endif %}
+
+    </main>
+
+    <!-- MINIMAL EDITORIAL FOOTER -->
+    <footer class="cinematic-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <strong>DiamondIQ</strong> · Intelligent Diamond Valuation System
+                <p>Academic Capstone & Viva Demonstration System · Department of Computer Science & Engineering</p>
+                <p style="margin-top: 2px;">Supervised Tree Ensemble · Dual Currency (₹ INR & $ USD) · Empirical MAE Bands</p>
+            </div>
+            <div class="footer-nav">
+                <a href="/">Home</a>
+                <a href="/prediction?mode=standard">Standard Estimate</a>
+                <a href="/prediction?mode=detailed">Detailed Estimate</a>
+                <a href="/origin-screening">Origin Screening</a>
+                <a href="/health">System Status</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

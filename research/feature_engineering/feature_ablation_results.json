@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "total_records": 53920,
+    "train_size": 43136,
+    "test_size": 10784,
+    "random_seed": 42,
+    "selection_criterion": "Lowest 5-Fold Cross-Validation MAE on Training Partition Only"
+  },
+  "training_cv_results": [
+    {
+      "Configuration": "Config 0: Baseline (Standard 9 Features)",
+      "Total_Features": 9,
+      "Train_CV_MAE": 298.4,
+      "Train_CV_MAE_Std": 4.03,
+      "Train_CV_RMSE": 590.68,
+      "Train_CV_R2": 0.977995,
+      "Delta_CV_MAE": 0.0,
+      "Decision": "Baseline"
+    },
+    {
+      "Configuration": "Config 1: Baseline + Physical Volume (x*y*z)",
+      "Total_Features": 10,
+      "Train_CV_MAE": 297.7,
+      "Train_CV_MAE_Std": 4.54,
+      "Train_CV_RMSE": 587.24,
+      "Train_CV_R2": 0.978248,
+      "Delta_CV_MAE": -0.7,
+      "Decision": "Marginal / Redundant"
+    },
+    {
+      "Configuration": "Config 2: Baseline + Carat-Quality Interactions",
+      "Total_Features": 12,
+      "Train_CV_MAE": 271.47,
+      "Train_CV_MAE_Std": 3.07,
+      "Train_CV_RMSE": 535.7,
+      "Train_CV_R2": 0.981898,
+      "Delta_CV_MAE": -26.93,
+      "Decision": "Candidate Improvement"
+    },
+    {
+      "Configuration": "Config 3: Baseline + Carat x Clarity Only",
+      "Total_Features": 10,
+      "Train_CV_MAE": 277.95,
+      "Train_CV_MAE_Std": 3.46,
+      "Train_CV_RMSE": 546.56,
+      "Train_CV_R2": 0.981156,
+      "Delta_CV_MAE": -20.45,
+      "Decision": "Candidate Improvement"
+    },
+    {
+      "Configuration": "Config 4: Baseline + Geometry (Volume, Aspect, Depth Ratio)",
+      "Total_Features": 12,
+      "Train_CV_MAE": 290.27,
+      "Train_CV_MAE_Std": 3.74,
+      "Train_CV_RMSE": 583.17,
+      "Train_CV_R2": 0.978546,
+      "Delta_CV_MAE": -8.13,
+      "Decision": "Candidate Improvement"
+    },
+    {
+      "Configuration": "Config 5: Full Engineered Set (All Candidate Features)",
+      "Total_Features": 16,
+      "Train_CV_MAE": 261.37,
+      "Train_CV_MAE_Std": 3.85,
+      "Train_CV_RMSE": 522.82,
+      "Train_CV_R2": 0.982756,
+      "Delta_CV_MAE": -37.03,
+      "Decision": "Candidate Improvement"
+    }
+  ],
+  "selected_configuration": {
+    "name": "Config 5: Full Engineered Set (All Candidate Features)",
+    "total_features": 16,
+    "train_cv_mae": 261.37,
+    "untouched_test_mae": 255.95794677734375,
+    "untouched_test_rmse": 503.7750148875984,
+    "untouched_test_r2": 0.9841697812080383,
+    "test_delta_mae_vs_baseline": -33.1649169921875
+  },
+  "baseline_evaluation": {
+    "untouched_test_mae": 289.12286376953125,
+    "untouched_test_rmse": 558.0263770647406,
+    "untouched_test_r2": 0.9805766940116882
+  }
+}

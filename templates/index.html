@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiamondIQ — Discover the True Value of Your Diamond</title>
+    <meta name="description" content="Precision machine-learning diamond valuation. Discover the true market value of your diamond with clear pricing in Indian Rupees and US Dollars.">
+    
+    <!-- Google Fonts for Editorial Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="cinematic-home">
+
+    <!-- MINIMAL LUXURY NAVBAR -->
+    <header class="cinematic-navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo" aria-label="DiamondIQ Home">
+                <span class="brand-symbol">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 9l10 13 10-13-10-7zm0 2.8L18.4 9H5.6L12 4.8zM4.1 10.5h4.6l2.3 8.3-6.9-8.3zm6.4 0h3l-1.5 8.7-1.5-8.7zm4.8 0h4.6l-6.9 8.3 2.3-8.3z"/>
+                    </svg>
+                </span>
+                Diamond<span class="brand-accent">IQ</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="/prediction?mode=standard" class="nav-item">Standard Estimate</a>
+                <a href="/prediction?mode=detailed" class="nav-item">Detailed Estimate</a>
+                <a href="/prediction?mode=standard#simulator" class="nav-item">Carat Explorer</a>
+                <a href="/origin-screening" class="nav-item">Origin Screening</a>
+            </nav>
+
+            <div class="nav-cta-wrap">
+                <a href="/prediction" class="pill-nav-btn">
+                    Estimate Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- CINEMATIC HERO SECTION -->
+        <section class="cinematic-hero">
+            <div class="hero-glow-backdrop" aria-hidden="true"></div>
+
+            <div class="hero-container">
+                <!-- Left: Headline & CTA -->
+                <div class="hero-text-col">
+                    <h1 class="hero-title">
+                        Discover the True Value<br>
+                        <em>of Your Diamond.</em>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Get a machine-learning-based diamond price estimate with clear pricing in Indian Rupees and US Dollars.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="/prediction?mode=standard" class="luxury-pill-btn">
+                            Estimate Your Diamond
+                        </a>
+                        <a href="/prediction?mode=standard#simulator" class="luxury-text-link">
+                            Explore Carat Prices →
+                        </a>
+                    </div>
+
+                    <div class="hero-footnote">
+                        Supervised Tree Ensemble · Dual Currency (₹ INR & $ USD) · Empirical MAE Bands · 60,000+ Records
+                    </div>
+                </div>
+
+                <!-- Right: Large Floating Diamond Visual -->
+                <div class="hero-visual-col" aria-hidden="true">
+                    <div class="diamond-crystal-wrap">
+                        <!-- Cold-Cyan Atmospheric Ambient Halo -->
+                        <div class="crystal-aura"></div>
+
+                        <!-- 3D Geometric Translucent Diamond Crystal SVG -->
+                        <svg class="crystal-svg" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="haloCore" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4"/>
+                                    <stop offset="60%" stop-color="#0284c7" stop-opacity="0.15"/>
+                                    <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+                                </radialGradient>
+
+                                <linearGradient id="topFrontLeft" x1="200" y1="40" x2="130" y2="260" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                                    <stop offset="40%" stop-color="#e0f2fe" stop-opacity="0.75"/>
+                                    <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.35"/>
+                                </linearGradient>
+
+                                <linearGradient id="topFrontCenter" x1="200" y1="40" x2="200" y2="260" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                                    <stop offset="50%" stop-color="#f0f9ff" stop-opacity="0.6"/>
+                                    <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.25"/>
+                                </linearGradient>
+
+                                <linearGradient id="topFrontRight" x1="200" y1="40" x2="270" y2="260" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                                    <stop offset="45%" stop-color="#e0f2fe" stop-opacity="0.7"/>
+                                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.3"/>
+                                </linearGradient>
+
+                                <linearGradient id="topBackLeft" x1="200" y1="40" x2="60" y2="240" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.5"/>
+                                    <stop offset="100%" stop-color="#0369a1" stop-opacity="0.15"/>
+                                </linearGradient>
+
+                                <linearGradient id="topBackRight" x1="200" y1="40" x2="340" y2="240" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.5"/>
+                                    <stop offset="100%" stop-color="#0369a1" stop-opacity="0.15"/>
+                                </linearGradient>
+
+                                <linearGradient id="bottomFrontCenter" x1="200" y1="260" x2="200" y2="440" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.65"/>
+                                    <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.35"/>
+                                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.85"/>
+                                </linearGradient>
+
+                                <linearGradient id="bottomFrontLeft" x1="130" y1="260" x2="200" y2="440" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.5"/>
+                                    <stop offset="70%" stop-color="#0ea5e9" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.7"/>
+                                </linearGradient>
+
+                                <linearGradient id="bottomFrontRight" x1="270" y1="260" x2="200" y2="440" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.5"/>
+                                    <stop offset="70%" stop-color="#0284c7" stop-opacity="0.2"/>
+                                    <stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.7"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Ambient Inner Glow -->
+                            <circle cx="200" cy="245" r="160" fill="url(#haloCore)"/>
+
+                            <!-- Back Internal Refraction Facets -->
+                            <polygon points="200,40 60,240 140,215" fill="url(#topBackLeft)" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                            <polygon points="200,40 140,215 260,215" fill="rgba(186,230,253,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+                            <polygon points="200,40 260,215 340,240" fill="url(#topBackRight)" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                            <polygon points="200,440 60,240 140,215" fill="rgba(14,165,233,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+                            <polygon points="200,440 140,215 260,215" fill="rgba(3,105,161,0.15)" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                            <polygon points="200,440 260,215 340,240" fill="rgba(14,165,233,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+
+                            <!-- Front Upper Pyramid Facets -->
+                            <polygon points="200,40 60,240 130,260" fill="url(#topFrontLeft)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round"/>
+                            <polygon points="200,40 130,260 270,260" fill="url(#topFrontCenter)" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round"/>
+                            <polygon points="200,40 270,260 340,240" fill="url(#topFrontRight)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round"/>
+
+                            <!-- Front Lower Pyramid Facets -->
+                            <polygon points="200,440 60,240 130,260" fill="url(#bottomFrontLeft)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round"/>
+                            <polygon points="200,440 130,260 270,260" fill="url(#bottomFrontCenter)" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round"/>
+                            <polygon points="200,440 270,260 340,240" fill="url(#bottomFrontRight)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round"/>
+
+                            <!-- Central Horizon Crest Highlight (The Equatorial Belt) -->
+                            <polyline points="60,240 130,260 270,260 340,240" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+
+                            <!-- Center Vertical Specular Edge Line -->
+                            <line x1="200" y1="40" x2="200" y2="440" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+
+                            <!-- Star Glints / Specular Sparkles -->
+                            <g class="sparkle-1" transform="translate(200, 38)">
+                                <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+                                <line x1="-8" y1="0" x2="8" y2="0" stroke="#ffffff" stroke-width="1.2"/>
+                                <line x1="0" y1="-8" x2="0" y2="8" stroke="#ffffff" stroke-width="1.2"/>
+                            </g>
+                            <g class="sparkle-2" transform="translate(130, 260)">
+                                <circle cx="0" cy="0" r="2" fill="#ffffff"/>
+                                <line x1="-6" y1="0" x2="6" y2="0" stroke="#ffffff" stroke-width="1"/>
+                                <line x1="0" y1="-6" x2="0" y2="8" stroke="#ffffff" stroke-width="1"/>
+                            </g>
+                            <g class="sparkle-3" transform="translate(270, 260)">
+                                <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+                                <line x1="-7" y1="0" x2="7" y2="0" stroke="#ffffff" stroke-width="1.1"/>
+                                <line x1="0" y1="-7" x2="0" y2="7" stroke="#ffffff" stroke-width="1.1"/>
+                            </g>
+                            <g class="sparkle-4" transform="translate(200, 440)">
+                                <circle cx="0" cy="0" r="2" fill="#ffffff"/>
+                                <line x1="-6" y1="0" x2="6" y2="0" stroke="#ffffff" stroke-width="1"/>
+                                <line x1="0" y1="-6" x2="0" y2="6" stroke="#ffffff" stroke-width="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THREE CLEAR ENTRY POINTS SECTION -->
+        <section class="entry-points-section" id="models" aria-labelledby="entry-heading">
+            <div class="entry-container">
+                <div class="section-intro">
+                    <p class="sub-eyebrow">Valuation Capabilities</p>
+                    <h2 id="entry-heading" class="section-headline">Three Pathways to Diamond Valuation</h2>
+                    <p class="section-lead">
+                        Select the method tailored to your requirements, from rapid standard 4C valuations to laboratory-grade certificates and sensitivity analysis.
+                    </p>
+                </div>
+
+                <div class="entry-grid">
+                    <!-- Entry 1: Standard Price Estimate -->
+                    <article class="entry-card">
+                        <div>
+                            <div class="card-badge">01 · STANDARD PIPELINE</div>
+                            <h3 class="card-title">Standard Price Estimate</h3>
+                            <p class="card-desc">
+                                Rapid market valuation based on standard 4Cs (Carat, Cut, Color, Clarity) and physical millimeter dimensions. Trained on 53,920 commercial records.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="card-meta">
+                                <span>Dual Ensemble (CatBoost + XGBoost)</span>
+                                <span>Test R² 98.41% · Dual Currency (₹ & $)</span>
+                            </div>
+                            <a href="/prediction?mode=standard" class="card-link">
+                                Estimate Standard Diamond →
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Entry 2: Detailed Price Estimate -->
+                    <article class="entry-card">
+                        <div>
+                            <div class="card-badge">02 · DETAILED PIPELINE</div>
+                            <h3 class="card-title">Detailed Price Estimate</h3>
+                            <p class="card-desc">
+                                Comprehensive valuation utilizing 17 gemological attributes including Polish, Symmetry, Girdle, Culet, and Grading Certificate origin.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="card-meta">
+                                <span>Tuned Random Forest Pipeline</span>
+                                <span>Laboratory Dataset (6,485 Records)</span>
+                            </div>
+                            <a href="/prediction?mode=detailed" class="card-link">
+                                Estimate Detailed Diamond →
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Entry 3: Carat Price Explorer -->
+                    <article class="entry-card featured-entry">
+                        <div>
+                            <div class="card-badge">03 · SENSITIVITY TOOL</div>
+                            <h3 class="card-title">Carat Price Explorer</h3>
+                            <p class="card-desc">
+                                Change carat weight to see how the model's estimated price changes while the other diamond characteristics remain fixed.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="card-meta">
+                                <span>Interactive Carat Scaling</span>
+                                <span>Real-Time Delta in ₹ & $</span>
+                            </div>
+                            <a href="/prediction?mode=standard#simulator" class="card-link">
+                                Explore Carat Prices →
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MINIMAL EDITORIAL FOOTER -->
+    <footer class="cinematic-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <strong>DiamondIQ</strong> · Intelligent Diamond Valuation System
+                <p>Academic capstone project · Predictions reflect statistical models and historical market data, not legal appraisals.</p>
+            </div>
+            <div class="footer-nav">
+                <a href="/prediction?mode=standard">Standard Estimate</a>
+                <a href="/prediction?mode=detailed">Detailed Estimate</a>
+                <a href="/prediction?mode=standard#simulator">Carat Explorer</a>
+                <a href="/origin-screening">Origin Screening</a>
+                <a href="/health">System Status</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

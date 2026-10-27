@@ -1,0 +1,74 @@
+[
+  {
+    "Model": "Linear Regression",
+    "CV_Train_MAE": 739.6,
+    "Test_MAE": 726.3,
+    "Test_RMSE": 1135.94,
+    "Test_R2": 0.919513,
+    "Fit_Time_Sec": 7.28
+  },
+  {
+    "Model": "Ridge Regression (alpha=1.0)",
+    "CV_Train_MAE": 739.02,
+    "Test_MAE": 725.79,
+    "Test_RMSE": 1135.08,
+    "Test_R2": 0.919635,
+    "Fit_Time_Sec": 5.1
+  },
+  {
+    "Model": "Decision Tree Regressor",
+    "CV_Train_MAE": 372.73,
+    "Test_MAE": 357.59,
+    "Test_RMSE": 735.68,
+    "Test_R2": 0.96624,
+    "Fit_Time_Sec": 5.3
+  },
+  {
+    "Model": "Random Forest Regressor (200 trees)",
+    "CV_Train_MAE": 303.94,
+    "Test_MAE": 287.72,
+    "Test_RMSE": 594.36,
+    "Test_R2": 0.977965,
+    "Fit_Time_Sec": 29.36
+  },
+  {
+    "Model": "Extra Trees Regressor (200 trees)",
+    "CV_Train_MAE": 285.89,
+    "Test_MAE": 274.52,
+    "Test_RMSE": 546.72,
+    "Test_R2": 0.981356,
+    "Fit_Time_Sec": 31.0
+  },
+  {
+    "Model": "Gradient Boosting Regressor",
+    "CV_Train_MAE": 319.63,
+    "Test_MAE": 309.93,
+    "Test_RMSE": 598.65,
+    "Test_R2": 0.977646,
+    "Fit_Time_Sec": 1152.65
+  },
+  {
+    "Model": "XGBoost Regressor",
+    "CV_Train_MAE": 296.9,
+    "Test_MAE": 287.09,
+    "Test_RMSE": 555.65,
+    "Test_R2": 0.980742,
+    "Fit_Time_Sec": 5810.03
+  },
+  {
+    "Model": "CatBoost Regressor",
+    "CV_Train_MAE": null,
+    "Test_MAE": 277.29,
+    "Test_RMSE": 520.01,
+    "Test_R2": 0.983133,
+    "Fit_Time_Sec": 61.21
+  },
+  {
+    "Model": "CatBoost + XGBoost Ensemble (0.55 / 0.45)",
+    "CV_Train_MAE": null,
+    "Test_MAE": 273.0,
+    "Test_RMSE": 519.07,
+    "Test_R2": 0.983194,
+    "Fit_Time_Sec": 5871.24
+  }
+]

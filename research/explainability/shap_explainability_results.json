@@ -1,0 +1,165 @@
+{
+  "base_expected_value": 3926.03857421875,
+  "global_importance_raw": [
+    {
+      "Raw_Feature": "y",
+      "Aggregated_SHAP_Impact": 2791.9033203125
+    },
+    {
+      "Raw_Feature": "carat",
+      "Aggregated_SHAP_Impact": 1185.462890625
+    },
+    {
+      "Raw_Feature": "clarity",
+      "Aggregated_SHAP_Impact": 1135.6656494140625
+    },
+    {
+      "Raw_Feature": "color",
+      "Aggregated_SHAP_Impact": 769.5550537109375
+    },
+    {
+      "Raw_Feature": "z",
+      "Aggregated_SHAP_Impact": 348.35406494140625
+    },
+    {
+      "Raw_Feature": "x",
+      "Aggregated_SHAP_Impact": 186.47474670410156
+    },
+    {
+      "Raw_Feature": "cut",
+      "Aggregated_SHAP_Impact": 89.58839416503906
+    },
+    {
+      "Raw_Feature": "depth",
+      "Aggregated_SHAP_Impact": 40.989830017089844
+    },
+    {
+      "Raw_Feature": "table",
+      "Aggregated_SHAP_Impact": 19.33562660217285
+    }
+  ],
+  "case_studies": [
+    {
+      "tier": "Budget Diamond (Carat <= 0.40)",
+      "attributes": {
+        "carat": 0.31,
+        "cut": "Very Good",
+        "color": "I",
+        "clarity": "SI1",
+        "depth": 63.5,
+        "table": 56.0,
+        "x": 4.32,
+        "y": 4.28,
+        "z": 2.73
+      },
+      "actual_price": 523.0,
+      "predicted_price": 473.61,
+      "base_value": 3926.04,
+      "top_5_shap_drivers": [
+        {
+          "Feature": "num__y",
+          "SHAP_Value": -1545.0172119140625
+        },
+        {
+          "Feature": "num__carat",
+          "SHAP_Value": -1002.92822265625
+        },
+        {
+          "Feature": "cat__color_I",
+          "SHAP_Value": -490.0536804199219
+        },
+        {
+          "Feature": "num__z",
+          "SHAP_Value": -324.983642578125
+        },
+        {
+          "Feature": "cat__clarity_SI1",
+          "SHAP_Value": 156.03317260742188
+        }
+      ]
+    },
+    {
+      "tier": "Mid-tier Diamond (Carat ~ 1.00)",
+      "attributes": {
+        "carat": 1.0,
+        "cut": "Premium",
+        "color": "G",
+        "clarity": "VS2",
+        "depth": 63.0,
+        "table": 58.0,
+        "x": 6.4,
+        "y": 6.33,
+        "z": 4.01
+      },
+      "actual_price": 6048.0,
+      "predicted_price": 5793.39,
+      "base_value": 3926.04,
+      "top_5_shap_drivers": [
+        {
+          "Feature": "num__carat",
+          "SHAP_Value": 1018.61328125
+        },
+        {
+          "Feature": "cat__clarity_VS2",
+          "SHAP_Value": 726.9783325195312
+        },
+        {
+          "Feature": "cat__color_G",
+          "SHAP_Value": -386.4775390625
+        },
+        {
+          "Feature": "num__z",
+          "SHAP_Value": 278.0703430175781
+        },
+        {
+          "Feature": "cat__color_I",
+          "SHAP_Value": 156.12612915039062
+        }
+      ]
+    },
+    {
+      "tier": "Luxury Diamond (Carat >= 2.00)",
+      "attributes": {
+        "carat": 2.02,
+        "cut": "Good",
+        "color": "I",
+        "clarity": "SI2",
+        "depth": 61.0,
+        "table": 62.0,
+        "x": 8.1,
+        "y": 8.14,
+        "z": 4.95
+      },
+      "actual_price": 12927.0,
+      "predicted_price": 13318.68,
+      "base_value": 3926.04,
+      "top_5_shap_drivers": [
+        {
+          "Feature": "num__y",
+          "SHAP_Value": 6549.58984375
+        },
+        {
+          "Feature": "num__carat",
+          "SHAP_Value": 4066.720703125
+        },
+        {
+          "Feature": "cat__color_I",
+          "SHAP_Value": -1189.366455078125
+        },
+        {
+          "Feature": "num__z",
+          "SHAP_Value": 734.12548828125
+        },
+        {
+          "Feature": "cat__clarity_SI2",
+          "SHAP_Value": 666.336181640625
+        }
+      ]
+    }
+  ],
+  "methodology_note": {
+    "shap_definition": "SHAP (SHapley Additive exPlanations) computes exact game-theoretic Shapley values distributing the difference between model output and expected value.",
+    "app_comparison_distinction": "The application's 'Explain My Prediction' module computes a one-at-a-time difference from an Ideal 1.0 ct G VS2 baseline diamond. While intuitive for non-technical buyers, it is a heuristic comparison and must not be confused with mathematically balanced TreeSHAP values.",
+    "causal_disclaimer": "Neither SHAP nor reference-difference values constitute physical or market causation. Changing a diamond's grading on paper does not causally alter its market clearing value without joint gemological consideration."
+  }
+}

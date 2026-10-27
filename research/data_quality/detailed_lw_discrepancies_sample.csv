@@ -1,0 +1,101 @@
+Shape,Cut,Color,Clarity,Carat Weight,Length/Width Ratio,Depth %,Table %,Polish,Symmetry,Girdle,Culet,Length,Width,Height,Price,Type,Fluorescence,computed_ratio,ratio_diff
+Heart,,D,IF,1.0,1.18,61.7,58.0,Excellent,Excellent,Slightly Thick to Very Thick,,5.85,6.89,4.25,7110,GIA,Faint,0.8490566037735849,0.330943396226415
+Heart,,F,VS1,7.54,1.12,55.6,58.0,Excellent,Excellent,Medium to Slightly Thick,,12.32,13.83,7.69,16910,GIA Lab-Grown,,0.8908170643528561,0.22918293564714398
+Heart,,E,VVS1,1.75,1.15,58.7,57.0,Excellent,Excellent,Medium to Very Thick,,7.3,8.4,4.93,3540,GIA Lab-Grown,,0.869047619047619,0.28095238095238095
+Heart,,D,VVS2,1.01,1.13,63.2,61.0,Excellent,Very Good,Slightly Thick to Very Thick,,6.0,6.78,4.29,7360,GIA,,0.8849557522123893,0.24504424778761058
+Round,Very Good,E,VS2,1.01,1.01,64.4,57.0,Excellent,Very Good,Slightly Thick to Thick,,6.2,6.27,4.01,4100,GIA,,0.9888357256778311,0.02116427432216894
+Heart,,G,VVS1,1.06,1.18,57.8,57.0,Excellent,Very Good,Medium to Very Thick,,6.21,7.3,4.22,3860,GIA,Faint,0.8506849315068493,0.3293150684931506
+Round,Ideal,D,VS1,1.59,1.01,61.0,57.0,Excellent,Excellent,Medium,Pointed,7.52,7.58,4.6,1860,IGI Lab-Grown,,0.992084432717678,0.01791556728232202
+Heart,,E,VVS2,4.47,1.15,58.2,58.0,Excellent,Excellent,Slightly Thick to Very Thick,,10.01,11.54,6.72,11090,GIA Lab-Grown,,0.8674176776429809,0.28258232235701897
+Round,Excellent,H,VS2,1.0,1.01,63.0,57.0,Excellent,Excellent,Medium to Slightly Thick,,6.32,6.36,4.0,4080,GIA,,0.9937106918238994,0.016289308176100636
+Heart,,D,VVS1,1.02,1.19,56.1,61.0,Very Good,Excellent,Slightly Thick to Thick,,5.92,7.04,3.95,9530,GIA,,0.8409090909090909,0.349090909090909
+Heart,,G,VS2,1.52,1.17,58.2,60.0,Excellent,Excellent,Medium to Thick,,6.95,8.16,4.75,9730,GIA,,0.8517156862745098,0.31828431372549015
+Heart,,D,VS1,2.09,1.15,56.4,60.0,Excellent,Excellent,Medium to Thick,Pointed,7.9,9.06,5.11,5090,IGI Lab-Grown,,0.8719646799116998,0.2780353200883001
+Round,Ideal,E,VS1,1.58,1.01,61.2,57.0,Excellent,Excellent,Medium,Pointed,7.47,7.52,4.59,1840,IGI Lab-Grown,,0.9933510638297872,0.01664893617021279
+Heart,,E,VS1,1.73,1.17,58.1,59.0,Excellent,Excellent,Medium to Thick,,7.31,8.56,4.97,2480,GIA Lab-Grown,,0.8539719626168223,0.31602803738317764
+Round,Very Good,H,VS1,1.0,1.01,64.8,56.0,Excellent,Very Good,Medium to Thick,,6.18,6.25,4.02,3520,GIA,,0.9887999999999999,0.021200000000000108
+Heart,,D,VS1,1.01,1.15,63.5,55.0,Excellent,Very Good,Slightly Thick to Extremely Thick,,5.76,6.65,4.22,5710,GIA,,0.8661654135338345,0.28383458646616544
+Heart,,D,VS1,2.02,1.13,55.4,57.0,Excellent,Excellent,Slightly Thick to Thick,Pointed,7.84,8.86,4.91,3550,IGI Lab-Grown,,0.8848758465011287,0.24512415349887118
+Heart,,E,VS1,3.13,1.12,58.8,63.0,Excellent,Excellent,Slightly Thick to Thick,,9.04,10.11,5.94,6690,GIA Lab-Grown,,0.8941641938674579,0.22583580613254217
+Heart,,D,VS2,1.5,1.15,61.0,66.0,Excellent,Excellent,Slightly Thick to Very Thick,,6.84,7.85,4.79,9840,GIA,,0.8713375796178344,0.2786624203821655
+Round,Very Good,F,VS2,1.0,1.02,61.2,62.0,Good,Good,Medium to Thick,,6.34,6.46,3.91,4130,GIA,,0.9814241486068112,0.038575851393188865
+Round,Excellent,E,VS1,1.55,1.01,61.3,57.0,Excellent,Excellent,Medium to Slightly Thick,,7.42,7.46,4.56,1770,GIA Lab-Grown,,0.9946380697050938,0.015361930294906179
+Heart,,D,VVS1,1.6,1.14,58.5,57.0,Excellent,Excellent,Medium to Thick,,7.18,8.15,4.77,3550,GIA Lab-Grown,,0.8809815950920244,0.25901840490797545
+Round,Very Good,H,VS2,1.0,1.01,64.6,55.0,Excellent,Very Good,Slightly Thick to Thick,,6.18,6.27,4.02,3610,GIA,,0.9856459330143541,0.024354066985645906
+Heart,,F,VS1,1.59,1.14,54.1,64.0,Excellent,Excellent,Slightly Thick to Thick,Pointed,7.29,8.32,4.5,1940,IGI Lab-Grown,,0.876201923076923,0.2637980769230769
+Heart,,F,VS1,1.01,1.13,59.2,59.0,Excellent,Excellent,Medium to Thick,,6.13,6.92,4.1,3780,GIA,Faint,0.8858381502890174,0.24416184971098254
+Heart,,G,VS1,1.55,1.09,58.5,59.0,Excellent,Excellent,Slightly Thick to Very Thick,,7.25,7.88,4.61,9520,GIA,Faint,0.9200507614213198,0.16994923857868027
+Round,Very Good,G,VS2,1.0,1.01,64.9,58.0,Excellent,Very Good,Slightly Thick to Thick,,6.22,6.28,4.06,3580,GIA,Faint,0.9904458598726114,0.019554140127388653
+Round,Ideal,E,VS1,1.58,1.01,61.0,58.0,Excellent,Excellent,Thin to Medium,Pointed,7.48,7.52,4.58,1840,IGI Lab-Grown,,0.9946808510638299,0.015319148936170146
+Round,Excellent,H,VS2,1.0,1.01,62.9,57.0,Excellent,Very Good,Thin to Slightly Thick,,6.29,6.37,3.98,3680,GIA,,0.9874411302982732,0.022558869701726825
+Round,Excellent,E,VS1,1.59,1.01,61.5,56.0,Excellent,Excellent,Medium,,7.48,7.53,4.62,1810,GIA Lab-Grown,,0.9933598937583001,0.01664010624169987
+Heart,,H,VS1,1.5,1.13,58.2,63.0,Excellent,Excellent,Medium to Thick,,7.05,8.0,4.65,7830,GIA,Faint,0.88125,0.24874999999999992
+Round,Very Good,H,VS2,1.0,1.01,63.6,59.0,Excellent,Very Good,Medium to Thick,,6.25,6.29,3.99,3320,GIA,,0.9936406995230525,0.016359300476947558
+Round,Very Good,H,VS1,1.01,1.01,64.4,57.0,Excellent,Very Good,Slightly Thick to Thick,,6.21,6.29,4.02,4200,GIA,,0.9872813990461049,0.022718600953895107
+Round,Excellent,H,VS1,1.0,1.01,61.8,56.0,Excellent,Very Good,Slightly Thick,Very Small,6.33,6.4,3.93,3600,GIA,,0.9890625,0.020937500000000053
+Heart,,E,VVS2,3.58,1.12,57.9,61.0,Excellent,Excellent,Slightly Thick to Very Thick,,9.56,10.68,6.18,8400,GIA Lab-Grown,,0.8951310861423222,0.22486891385767793
+Heart,,D,VS1,1.84,1.13,54.3,59.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,7.67,8.67,4.71,3090,IGI Lab-Grown,,0.8846597462514417,0.24534025374855817
+Round,Very Good,G,VS2,1.0,1.01,64.8,59.0,Very Good,Excellent,Medium to Thick,,6.17,6.21,4.01,3970,GIA,,0.9935587761674718,0.016441223832528218
+Round,Excellent,D,VS1,1.51,1.01,62.6,57.0,Excellent,Excellent,Medium to Slightly Thick,,7.31,7.35,4.59,1770,GIA Lab-Grown,,0.9945578231292517,0.015442176870748336
+Heart,,D,VS1,2.1,1.13,55.1,62.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,7.92,8.93,4.92,3690,IGI Lab-Grown,,0.8868980963045913,0.24310190369540863
+Heart,,D,IF,1.09,1.13,55.8,57.0,Excellent,Very Good,Medium to Thick,,6.5,7.35,4.1,2370,GIA Lab-Grown,,0.8843537414965987,0.24564625850340116
+Heart,,F,VS1,1.65,1.13,55.3,62.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,7.32,8.28,4.58,2170,IGI Lab-Grown,,0.8840579710144929,0.245942028985507
+Heart,,E,VS1,2.01,1.14,56.4,61.0,Excellent,Excellent,Slightly Thick,Pointed,7.7,8.79,4.96,3260,IGI Lab-Grown,,0.8759954493742891,0.2640045506257108
+Round,Very Good,H,VVS1,1.0,1.01,64.4,58.0,Excellent,Very Good,Thick,,6.14,6.22,3.98,3720,GIA,,0.9871382636655949,0.022861736334405136
+Heart,,D,VS1,1.01,1.2,59.9,62.0,Excellent,Very Good,Medium to Very Thick,,5.71,6.83,4.09,5750,GIA,Faint,0.83601756954612,0.3639824304538799
+Heart,,F,VVS2,1.05,1.13,56.9,57.0,Excellent,Excellent,Medium to Extremely Thick,,6.31,7.1,4.04,5600,GIA,,0.8887323943661972,0.24126760563380267
+Round,Excellent,H,VS1,1.0,1.01,63.4,56.0,Excellent,Excellent,Medium to Slightly Thick,,6.3,6.35,4.01,3710,GIA,Medium,0.9921259842519685,0.01787401574803149
+Heart,,E,VS1,1.11,1.11,60.5,58.0,Excellent,Very Good,Medium to Thick,,6.42,7.11,4.3,5490,GIA,,0.9029535864978903,0.20704641350210984
+Round,Very Good,H,VS2,1.0,1.01,61.9,59.0,Excellent,Good,Slightly Thick to Thick,,6.28,6.35,3.9,3080,GIA,,0.988976377952756,0.02102362204724406
+Round,Excellent,E,VS1,1.59,1.01,62.2,58.0,Excellent,Excellent,Medium to Slightly Thick,,7.41,7.46,4.63,1810,GIA Lab-Grown,,0.9932975871313673,0.01670241286863272
+Heart,,D,VS2,1.01,1.18,59.4,57.0,Excellent,Very Good,Thick to Very Thick,,5.94,7.0,4.16,4320,GIA,,0.8485714285714286,0.3314285714285713
+Heart,,E,VS1,1.6,1.15,55.9,58.0,Excellent,Excellent,Medium to Thick,Pointed,7.23,8.28,4.63,2170,IGI Lab-Grown,,0.8731884057971016,0.27681159420289836
+Heart,,D,VVS2,1.01,1.17,58.5,61.0,Excellent,Very Good,Medium to Very Thick,,6.02,7.07,4.13,5790,GIA,,0.8514851485148514,0.3185148514851486
+Round,Excellent,E,VS1,1.53,1.01,61.4,58.0,Excellent,Excellent,Medium to Slightly Thick,,7.38,7.43,4.55,1740,GIA Lab-Grown,,0.9932705248990579,0.016729475100942137
+Heart,,H,VS2,1.01,1.18,56.9,61.0,Excellent,Excellent,Slightly Thick to Thick,,6.06,7.13,4.05,3550,GIA,,0.849929873772791,0.330070126227209
+Heart,,E,VS1,3.17,1.12,60.5,65.0,Excellent,Excellent,Medium to Thick,,8.98,10.08,6.1,6770,GIA Lab-Grown,,0.8908730158730159,0.22912698412698418
+Heart,,G,VS1,1.01,1.18,58.9,60.0,Excellent,Very Good,Slightly Thick to Very Thick,,5.92,7.0,4.12,4060,GIA,,0.8457142857142858,0.3342857142857142
+Round,Very Good,H,VVS2,1.03,1.01,63.9,59.0,Excellent,Very Good,Slightly Thick to Thick,,6.24,6.33,4.02,3950,GIA,,0.9857819905213271,0.02421800947867292
+Heart,,D,VS1,1.01,1.11,59.3,55.0,Excellent,Very Good,Medium to Extremely Thick,,6.19,6.86,4.07,6550,GIA,,0.902332361516035,0.20766763848396508
+Heart,,F,VVS2,2.09,1.14,54.0,63.0,Excellent,Excellent,Slightly Thick to Thick,Pointed,8.01,9.11,4.92,3400,IGI Lab-Grown,,0.8792535675082327,0.2607464324917672
+Heart,,H,VVS2,1.01,1.17,59.1,59.0,Excellent,Excellent,Thin to Thick,,6.0,7.01,4.15,3320,GIA,,0.8559201141226819,0.31407988587731805
+Heart,,E,VS1,2.46,1.15,53.9,63.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,8.4,9.68,5.22,3850,IGI Lab-Grown,,0.8677685950413224,0.2822314049586775
+Heart,,G,VS1,1.04,1.16,57.1,60.0,Excellent,Excellent,Slightly Thick to Thick,,6.18,7.14,4.07,3190,GIA,Strong,0.865546218487395,0.29445378151260493
+Round,Excellent,E,VS1,1.54,1.01,61.7,56.0,Excellent,Excellent,Thin to Medium,,7.41,7.45,4.58,1760,GIA Lab-Grown,,0.9946308724832215,0.015369127516778547
+Round,Excellent,H,VS1,1.0,1.01,63.7,56.0,Excellent,Excellent,Medium to Slightly Thick,,6.29,6.33,4.02,4140,GIA,,0.9936808846761453,0.01631911532385466
+Heart,,D,VS1,2.02,1.09,60.2,58.0,Excellent,Excellent,Thin to Medium,Pointed,7.89,8.59,5.17,3550,IGI Lab-Grown,,0.9185098952270081,0.17149010477299198
+Heart,,D,VVS2,1.01,1.13,60.3,58.0,Excellent,Excellent,Medium to Very Thick,,6.06,6.85,4.13,4600,GIA,Faint,0.8846715328467153,0.2453284671532846
+Heart,,F,VS2,1.01,1.12,60.1,59.0,Excellent,Excellent,Slightly Thick to Thick,,6.2,6.95,4.18,3500,GIA,,0.8920863309352518,0.2279136690647483
+Heart,,F,VS1,4.07,1.17,59.5,56.0,Excellent,Excellent,Medium to Very Thick,,9.56,11.21,6.67,27040,GIA Lab-Grown,,0.8528099910793934,0.31719000892060656
+Heart,,H,VS2,1.5,1.21,62.7,56.0,Excellent,Very Good,Medium to Very Thick,,6.41,7.74,4.85,6610,GIA,,0.8281653746770026,0.3818346253229974
+Round,Excellent,H,VS2,1.01,1.01,62.5,56.0,Excellent,Excellent,Medium to Slightly Thick,,6.39,6.43,4.01,4010,GIA,Faint,0.9937791601866252,0.016220839813374854
+Heart,,F,VS1,2.55,1.07,58.6,57.0,Excellent,Excellent,Medium to Very Thick,,8.71,9.36,5.49,5270,GIA Lab-Grown,,0.9305555555555557,0.13944444444444437
+Round,Very Good,H,VS1,1.0,1.01,64.7,58.0,Excellent,Excellent,Slightly Thick to Thick,,6.23,6.27,4.04,3340,GIA,Medium,0.9936204146730464,0.016379585326953605
+Heart,,F,VS1,7.11,1.12,59.3,55.0,Excellent,Excellent,Slightly Thick to Very Thick,,11.83,13.26,7.86,16440,GIA Lab-Grown,,0.8921568627450981,0.22784313725490202
+Heart,,D,VS1,1.53,1.06,58.1,57.0,Excellent,Excellent,Medium to Thick,,7.4,7.88,4.58,2140,GIA Lab-Grown,,0.9390862944162437,0.12091370558375636
+Heart,,G,VS1,1.79,1.19,60.2,59.0,Very Good,Excellent,Medium to Very Thick,,7.06,8.41,5.06,9790,GIA,Medium,0.8394768133174791,0.3505231866825208
+Heart,,D,IF,1.55,1.14,58.1,60.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,7.08,8.06,4.68,4610,IGI Lab-Grown,,0.8784119106699751,0.26158808933002475
+Heart,,D,VS1,1.01,1.19,58.6,61.0,Excellent,Excellent,Slightly Thick to Very Thick,,5.87,6.99,4.1,4350,GIA,Faint,0.8397711015736766,0.3502288984263233
+Round,Ideal,E,VS1,1.58,1.01,61.3,57.0,Excellent,Excellent,Medium,Pointed,7.49,7.53,4.6,1840,IGI Lab-Grown,,0.9946879150066401,0.015312084993359898
+Heart,,E,VS1,4.39,1.15,56.3,55.0,Excellent,Excellent,Medium to Very Thick,,10.15,11.64,6.56,10700,GIA Lab-Grown,,0.8719931271477663,0.2780068728522336
+Round,Excellent,H,VS2,1.0,1.01,60.6,59.0,Excellent,Excellent,Slightly Thick,,6.41,6.45,3.9,4020,GIA,,0.993798449612403,0.016201550387596964
+Heart,,H,VS2,1.52,1.04,53.2,55.0,Very Good,Very Good,Medium to Very Thick,,7.48,7.76,4.13,9600,GIA,Faint,0.963917525773196,0.07608247422680403
+Round,Excellent,H,VS2,1.01,1.01,62.1,58.0,Excellent,Excellent,Medium to Slightly Thick,,6.41,6.45,3.99,4070,GIA,,0.993798449612403,0.016201550387596964
+Round,Excellent,H,VS2,1.0,1.01,62.8,57.0,Excellent,Excellent,Medium to Slightly Thick,,6.33,6.37,3.99,3974,GIA,,0.9937205651491365,0.016279434850863472
+Heart,,E,VS1,3.04,1.13,58.7,53.0,Very Good,Very Good,Medium to Very Thick,,8.9,10.1,5.93,5850,GIA Lab-Grown,,0.8811881188118813,0.2488118811881186
+Heart,,D,VVS1,2.1,1.13,56.5,56.0,Excellent,Excellent,Slightly Thick to Very Thick,,7.99,9.01,5.09,4790,GIA Lab-Grown,,0.8867924528301887,0.2432075471698112
+Heart,,E,VS1,1.39,1.11,56.3,55.0,Excellent,Excellent,Medium to Slightly Thick,Pointed,6.94,7.73,4.35,1470,IGI Lab-Grown,,0.8978007761966365,0.21219922380336365
+Round,Very Good,H,VS2,1.01,1.01,63.8,59.0,Excellent,Excellent,Slightly Thick to Thick,,6.29,6.33,4.03,3930,GIA,Faint,0.9936808846761453,0.01631911532385466
+Heart,,E,VVS2,3.14,1.12,57.6,68.0,Very Good,Excellent,Medium to Very Thick,,9.04,10.11,5.83,6730,GIA Lab-Grown,,0.8941641938674579,0.22583580613254217
+Round,Excellent,E,VS1,1.55,1.01,61.6,57.0,Excellent,Excellent,Medium to Slightly Thick,,7.4,7.44,4.57,1770,GIA Lab-Grown,,0.9946236559139785,0.01537634408602151
+Heart,,D,VS1,1.05,1.18,60.7,61.0,Excellent,Very Good,Slightly Thick to Very Thick,,5.99,7.08,4.3,5560,GIA,,0.846045197740113,0.33395480225988694
+Heart,,D,VS1,2.58,1.14,54.4,59.0,Excellent,Excellent,Medium to Thick,Pointed,8.56,9.74,5.3,4670,IGI Lab-Grown,,0.8788501026694046,0.26114989733059535
+Heart,,D,VS2,1.5,1.18,58.7,60.0,Excellent,Excellent,Medium to Thick,,6.83,8.04,4.72,9890,GIA,,0.8495024875621892,0.3304975124378108
+Round,Excellent,H,VS2,1.0,1.01,62.7,56.0,Excellent,Excellent,Slightly Thick,,6.33,6.37,3.99,4120,GIA,,0.9937205651491365,0.016279434850863472
+Heart,,G,VS2,1.0,1.06,59.7,59.0,Excellent,Very Good,Thick to Extremely Thick,,6.35,6.72,4.01,3380,GIA,,0.9449404761904762,0.11505952380952389
+Heart,,E,VS1,4.13,1.17,59.1,57.0,Excellent,Excellent,Medium to Thick,,9.65,11.33,6.69,9660,GIA Lab-Grown,,0.851721094439541,0.3182789055604589
+Heart,,G,VS1,1.2,1.07,55.4,64.0,Excellent,Excellent,Slightly Thick to Very Thick,,6.87,7.32,4.06,6720,GIA,Faint,0.9385245901639344,0.13147540983606565
+Round,Ideal,E,VS1,1.58,1.01,62.3,57.0,Excellent,Excellent,Medium,Pointed,7.39,7.45,4.63,1820,IGI Lab-Grown,,0.9919463087248321,0.01805369127516787
+Heart,,E,VS1,1.45,1.15,54.7,64.0,Excellent,Excellent,Thin to Medium,Pointed,7.06,8.1,4.43,1800,IGI Lab-Grown,,0.8716049382716049,0.278395061728395
+Heart,,D,VS1,2.02,1.05,57.7,56.0,Excellent,Excellent,Thick to Very Thick,,8.2,8.58,4.95,3550,GIA Lab-Grown,,0.9557109557109557,0.09428904428904439
+Round,Excellent,G,VS2,1.06,1.01,62.6,57.0,Excellent,Excellent,Medium to Slightly Thick,,6.48,6.52,4.07,1170,GIA,Medium,0.9938650306748468,0.016134969325153237

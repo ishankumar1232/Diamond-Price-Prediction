@@ -1,0 +1,4 @@
+Configuration,Selection_Stage,Train_CV_MAE,Untouched_Test_MAE,Untouched_Test_RMSE,Untouched_Test_R2,Test_Delta_MAE
+Config 0: Baseline (Standard 9 Features),Baseline,298.4,289.12,558.03,0.980577,0.0
+Config 2: Baseline + Carat-Quality Interactions,Candidate (Domain Literature),271.47,264.69,508.96,0.983842,-24.43
+Winner: Config 5: Full Engineered Set (All Candidate Features),Selected by Training CV,261.37,255.96,503.78,0.98417,-33.16

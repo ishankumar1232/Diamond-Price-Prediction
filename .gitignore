@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+
+# Operating system / IDE artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# CatBoost & ML runtime/training telemetry
+catboost_info/
+*.tfevents*
+
+# Temporary files & logs
+*.log
+*.tmp
+*.bak
+*~

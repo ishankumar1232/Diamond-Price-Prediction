@@ -1,0 +1,67 @@
+{
+  "standard_dataset_audit": {
+    "total_rows": 53940,
+    "zero_dimensions_count": 20,
+    "clean_rows": 53920,
+    "repeated_profile_rows": 685,
+    "unique_repeated_profiles": 340,
+    "profiles_with_price_divergence": 198,
+    "max_price_spread": 1447.0
+  },
+  "dimension_cleaning_experiment": {
+    "config_A_uncleaned": {
+      "train_size": 43156,
+      "mae": 282.7294921875,
+      "rmse": 551.2896527688507,
+      "r2": 0.9810428619384766
+    },
+    "config_B_cleaned": {
+      "train_size": 43136,
+      "mae": 281.6090393066406,
+      "rmse": 548.4529663061364,
+      "r2": 0.9812374114990234
+    },
+    "clean_test_size": 10784,
+    "zero_record_error": {
+      "config_A_mae": 215.9583282470703,
+      "config_B_mae": 2902.879638671875
+    }
+  },
+  "detailed_dataset_audit": {
+    "total_rows": 6485,
+    "missing_cut_pct": 66.35,
+    "missing_culet_pct": 70.84,
+    "missing_fluorescence_pct": 81.17,
+    "lw_ratio_discrepancy_count": 1308,
+    "max_lw_ratio_discrepancy": 0.4978770949720671,
+    "type_breakdown": [
+      {
+        "Type": "GIA",
+        "count": 3355,
+        "mean": 4890.969597615499,
+        "std": 3648.49348954626,
+        "median": 4090.0,
+        "min": 1020,
+        "max": 39460
+      },
+      {
+        "Type": "GIA Lab-Grown",
+        "count": 1254,
+        "mean": 2705.9250398724084,
+        "std": 2397.280994535844,
+        "median": 1790.0,
+        "min": 1020,
+        "max": 27040
+      },
+      {
+        "Type": "IGI Lab-Grown",
+        "count": 1876,
+        "mean": 1644.813432835821,
+        "std": 1495.844276155598,
+        "median": 1150.0,
+        "min": 1010,
+        "max": 23560
+      }
+    ]
+  }
+}
